@@ -4,6 +4,9 @@ import { prisma } from "@/lib/db"
 export async function GET() {
     try {
         const records = await prisma.presupuesto.findMany({
+            include: {
+                proyecto: true
+            },
             orderBy: { fechaCreacion: 'desc' }
         })
         return NextResponse.json(records)

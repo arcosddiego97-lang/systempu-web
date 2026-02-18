@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/db"
+import { getSession } from "@/lib/auth"
 
 export async function GET(
     request: Request,
@@ -91,6 +92,11 @@ export async function DELETE(
     try {
         const { id: idStr } = await params
         const id = parseInt(idStr)
+
+        const session = await getSession()
+        if (!session || session.user.role !== "ADMIN") {
+            return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+        }
 
         // Delete all related insumos first
         await prisma.insumoEnAnalisis.deleteMany({

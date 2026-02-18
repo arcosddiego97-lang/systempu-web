@@ -338,7 +338,7 @@ export default function APUEditorPage({ params }: { params: Promise<{ id: string
                         )}
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                             <div className="col-span-1">
                                 <label className="text-xs font-bold uppercase text-muted-foreground">Código</label>
                                 <div className="font-mono text-lg text-blue-600 font-bold">{apu.codigo}</div>
@@ -493,156 +493,158 @@ export default function APUEditorPage({ params }: { params: Promise<{ id: string
                                     <p className="text-xs font-medium italic">No hay insumos de esta categoría asignados.</p>
                                 </div>
                             ) : (
-                                <table className="w-full text-sm text-left">
-                                    <thead className="bg-slate-50/50 text-[10px] font-black uppercase text-slate-400 border-b border-slate-100">
-                                        <tr>
-                                            <th className="px-6 py-3">Clave</th>
-                                            <th className="px-6 py-3">Descripción / Unidad</th>
-                                            <th className="px-6 py-3 text-right">Costo U.</th>
-                                            <th className="px-6 py-3 text-right">Cantidad</th>
-                                            <th className="px-6 py-3 text-right">Importe</th>
-                                            <th className="px-6 py-3"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-slate-50">
-                                        {section.id === "EQP" && (
-                                            <>
-                                                <tr className="bg-purple-50/30">
-                                                    <td className="px-6 py-4 font-mono text-purple-600 font-bold italic">HME-01</td>
-                                                    <td className="px-6 py-4">
-                                                        <div className="flex flex-col">
-                                                            <span className="text-slate-700 font-medium font-black italic">HERRAMIENTA MENOR (3% DE MO)</span>
-                                                            <span className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">(%)</span>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-6 py-4 text-right font-medium text-slate-600">${subtotalMO.toFixed(2)}</td>
-                                                    <td className="px-6 py-4 text-right font-mono font-bold text-slate-700">0.0300</td>
-                                                    <td className="px-6 py-4 text-right font-black text-purple-700">${herramientaMenorImporte.toFixed(2)}</td>
-                                                    <td className="px-6 py-4 text-right"></td>
-                                                </tr>
-                                                <tr className="bg-blue-50/30">
-                                                    <td className="px-6 py-4 font-mono text-blue-600 font-bold italic">EQS-01</td>
-                                                    <td className="px-6 py-4">
-                                                        <div className="flex flex-col">
-                                                            <span className="text-slate-700 font-medium font-black italic">EQUIPO DE SEGURIDAD ({(factorEquipoSeguridadValue * 100).toFixed(1)}% DE MO)</span>
-                                                            <span className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">(%)</span>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-6 py-4 text-right font-medium text-slate-600">${subtotalMO.toFixed(2)}</td>
-                                                    <td className="px-6 py-4 text-right">
-                                                        {isEditingEquipoSeguridad ? (
-                                                            <input
-                                                                type="number"
-                                                                min="0"
-                                                                max="100"
-                                                                step="0.1"
-                                                                className="w-20 px-2 py-1 text-right border rounded focus:ring-2 focus:ring-blue-500"
-                                                                value={tempEquipoSeguridad}
-                                                                onChange={(e) => setTempEquipoSeguridad(e.target.value)}
-                                                                onBlur={handleUpdateEquipoSeguridad}
-                                                                onKeyDown={(e) => {
-                                                                    if (e.key === 'Enter') handleUpdateEquipoSeguridad()
-                                                                    if (e.key === 'Escape') setIsEditingEquipoSeguridad(false)
-                                                                }}
-                                                                autoFocus
-                                                            />
-                                                        ) : (
-                                                            <span
-                                                                className="cursor-pointer hover:bg-blue-100 px-2 py-1 rounded font-mono font-bold text-slate-700"
-                                                                onClick={() => {
-                                                                    setTempEquipoSeguridad((factorEquipoSeguridadValue * 100).toFixed(2))
-                                                                    setIsEditingEquipoSeguridad(true)
-                                                                }}
-                                                            >
-                                                                {(factorEquipoSeguridadValue * 100).toFixed(4)}
-                                                            </span>
-                                                        )}
-                                                    </td>
-                                                    <td className="px-6 py-4 text-right font-black text-blue-700">${equipoSeguridadImporte.toFixed(2)}</td>
-                                                    <td className="px-6 py-4 text-right"></td>
-                                                </tr>
-                                            </>
-                                        )}
-                                        {section.items.map((item) => {
-                                            const data = item.material || item.manoObra || item.maquinaria || (item as any).insumoApu
-                                            if (!data) return null
-
-                                            const clave = data.clave || (data as any).codigo
-                                            const unidad = data.unidad || "UND"
-
-                                            let costoU = 0
-                                            if (item.material) costoU = item.material.costo
-                                            else if (item.manoObra) costoU = item.manoObra.salarioReal
-                                            else if (item.maquinaria) costoU = item.maquinaria.costoHorario
-                                            else if ((item as any).insumoApu) costoU = (item as any).insumoApu.precioUnitario
-
-                                            const importe = item.costoParcial || 0
-
-                                            return (
-                                                <tr key={item.id} className="group hover:bg-slate-50/50 transition-colors">
-                                                    <td className="px-6 py-4 font-mono text-blue-600 font-bold">{clave}</td>
-                                                    <td className="px-6 py-4">
-                                                        <div className="flex flex-col">
-                                                            <span className="text-slate-700 font-medium line-clamp-1">{data.descripcion}</span>
-                                                            <span className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">{unidad}</span>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-6 py-4 text-right font-medium text-slate-600">${costoU.toFixed(2)}</td>
-                                                    <td className="px-6 py-4 text-right">
-                                                        {editingInsumoId === item.id ? (
-                                                            <Input
-                                                                type="number"
-                                                                step="0.00001"
-                                                                value={tempCantidad}
-                                                                onChange={(e) => setTempCantidad(e.target.value)}
-                                                                className="h-8 w-24 text-right ml-auto"
-                                                                autoFocus
-                                                                onKeyDown={(e) => {
-                                                                    if (e.key === "Enter") handleUpdateCantidad(item.id)
-                                                                    if (e.key === "Escape") setEditingInsumoId(null)
-                                                                }}
-                                                                onBlur={() => setEditingInsumoId(null)}
-                                                            />
-                                                        ) : (
-                                                            <div
-                                                                className="cursor-pointer hover:bg-slate-100 px-2 py-1 rounded transition-colors font-mono font-bold text-slate-700 inline-block min-w-[60px]"
-                                                                onClick={() => {
-                                                                    setEditingInsumoId(item.id)
-                                                                    setTempCantidad(item.cantidad.toString())
-                                                                }}
-                                                            >
-                                                                {item.cantidad.toFixed(5)}
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-sm text-left">
+                                        <thead className="bg-slate-50/50 text-[10px] font-black uppercase text-slate-400 border-b border-slate-100">
+                                            <tr>
+                                                <th className="px-6 py-3">Clave</th>
+                                                <th className="px-6 py-3">Descripción / Unidad</th>
+                                                <th className="px-6 py-3 text-right">Costo U.</th>
+                                                <th className="px-6 py-3 text-right">Cantidad</th>
+                                                <th className="px-6 py-3 text-right">Importe</th>
+                                                <th className="px-6 py-3"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-50">
+                                            {section.id === "EQP" && (
+                                                <>
+                                                    <tr className="bg-purple-50/30">
+                                                        <td className="px-6 py-4 font-mono text-purple-600 font-bold italic">HME-01</td>
+                                                        <td className="px-6 py-4">
+                                                            <div className="flex flex-col">
+                                                                <span className="text-slate-700 font-medium font-black italic">HERRAMIENTA MENOR (3% DE MO)</span>
+                                                                <span className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">(%)</span>
                                                             </div>
-                                                        )}
-                                                    </td>
-                                                    <td className="px-6 py-4 text-right font-black text-slate-900">${importe.toFixed(2)}</td>
-                                                    <td className="px-6 py-4 text-right">
-                                                        <div className="flex justify-end gap-1">
-                                                            <Button
-                                                                variant="ghost"
-                                                                size="sm"
-                                                                className="h-8 w-8 p-0 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                                title="Duplicar insumo"
-                                                                onClick={() => handleDuplicateInsumo(item)}
-                                                            >
-                                                                <Copy className="h-4 w-4" />
-                                                            </Button>
-                                                            {editingInsumoId === item.id ? (
-                                                                <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-green-600" onClick={() => handleUpdateCantidad(item.id)}>
-                                                                    <Check className="h-4 w-4" />
-                                                                </Button>
+                                                        </td>
+                                                        <td className="px-6 py-4 text-right font-medium text-slate-600">${subtotalMO.toFixed(2)}</td>
+                                                        <td className="px-6 py-4 text-right font-mono font-bold text-slate-700">0.0300</td>
+                                                        <td className="px-6 py-4 text-right font-black text-purple-700">${herramientaMenorImporte.toFixed(2)}</td>
+                                                        <td className="px-6 py-4 text-right"></td>
+                                                    </tr>
+                                                    <tr className="bg-blue-50/30">
+                                                        <td className="px-6 py-4 font-mono text-blue-600 font-bold italic">EQS-01</td>
+                                                        <td className="px-6 py-4">
+                                                            <div className="flex flex-col">
+                                                                <span className="text-slate-700 font-medium font-black italic">EQUIPO DE SEGURIDAD ({(factorEquipoSeguridadValue * 100).toFixed(1)}% DE MO)</span>
+                                                                <span className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">(%)</span>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-6 py-4 text-right font-medium text-slate-600">${subtotalMO.toFixed(2)}</td>
+                                                        <td className="px-6 py-4 text-right">
+                                                            {isEditingEquipoSeguridad ? (
+                                                                <input
+                                                                    type="number"
+                                                                    min="0"
+                                                                    max="100"
+                                                                    step="0.1"
+                                                                    className="w-20 px-2 py-1 text-right border rounded focus:ring-2 focus:ring-blue-500"
+                                                                    value={tempEquipoSeguridad}
+                                                                    onChange={(e) => setTempEquipoSeguridad(e.target.value)}
+                                                                    onBlur={handleUpdateEquipoSeguridad}
+                                                                    onKeyDown={(e) => {
+                                                                        if (e.key === 'Enter') handleUpdateEquipoSeguridad()
+                                                                        if (e.key === 'Escape') setIsEditingEquipoSeguridad(false)
+                                                                    }}
+                                                                    autoFocus
+                                                                />
                                                             ) : (
-                                                                <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-destructive opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => handleDeleteInsumo(item.id)}>
-                                                                    <Trash className="h-4 w-4" />
-                                                                </Button>
+                                                                <span
+                                                                    className="cursor-pointer hover:bg-blue-100 px-2 py-1 rounded font-mono font-bold text-slate-700"
+                                                                    onClick={() => {
+                                                                        setTempEquipoSeguridad((factorEquipoSeguridadValue * 100).toFixed(2))
+                                                                        setIsEditingEquipoSeguridad(true)
+                                                                    }}
+                                                                >
+                                                                    {(factorEquipoSeguridadValue * 100).toFixed(4)}
+                                                                </span>
                                                             )}
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </table>
+                                                        </td>
+                                                        <td className="px-6 py-4 text-right font-black text-blue-700">${equipoSeguridadImporte.toFixed(2)}</td>
+                                                        <td className="px-6 py-4 text-right"></td>
+                                                    </tr>
+                                                </>
+                                            )}
+                                            {section.items.map((item) => {
+                                                const data = item.material || item.manoObra || item.maquinaria || (item as any).insumoApu
+                                                if (!data) return null
+
+                                                const clave = data.clave || (data as any).codigo
+                                                const unidad = data.unidad || "UND"
+
+                                                let costoU = 0
+                                                if (item.material) costoU = item.material.costo
+                                                else if (item.manoObra) costoU = item.manoObra.salarioReal
+                                                else if (item.maquinaria) costoU = item.maquinaria.costoHorario
+                                                else if ((item as any).insumoApu) costoU = (item as any).insumoApu.precioUnitario
+
+                                                const importe = item.costoParcial || 0
+
+                                                return (
+                                                    <tr key={item.id} className="group hover:bg-slate-50/50 transition-colors">
+                                                        <td className="px-6 py-4 font-mono text-blue-600 font-bold">{clave}</td>
+                                                        <td className="px-6 py-4">
+                                                            <div className="flex flex-col">
+                                                                <span className="text-slate-700 font-medium line-clamp-1">{data.descripcion}</span>
+                                                                <span className="text-[10px] font-black uppercase text-slate-400 tracking-tighter">{unidad}</span>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-6 py-4 text-right font-medium text-slate-600">${costoU.toFixed(2)}</td>
+                                                        <td className="px-6 py-4 text-right">
+                                                            {editingInsumoId === item.id ? (
+                                                                <Input
+                                                                    type="number"
+                                                                    step="0.00001"
+                                                                    value={tempCantidad}
+                                                                    onChange={(e) => setTempCantidad(e.target.value)}
+                                                                    className="h-8 w-24 text-right ml-auto"
+                                                                    autoFocus
+                                                                    onKeyDown={(e) => {
+                                                                        if (e.key === "Enter") handleUpdateCantidad(item.id)
+                                                                        if (e.key === "Escape") setEditingInsumoId(null)
+                                                                    }}
+                                                                    onBlur={() => setEditingInsumoId(null)}
+                                                                />
+                                                            ) : (
+                                                                <div
+                                                                    className="cursor-pointer hover:bg-slate-100 px-2 py-1 rounded transition-colors font-mono font-bold text-slate-700 inline-block min-w-[60px]"
+                                                                    onClick={() => {
+                                                                        setEditingInsumoId(item.id)
+                                                                        setTempCantidad(item.cantidad.toString())
+                                                                    }}
+                                                                >
+                                                                    {item.cantidad.toFixed(5)}
+                                                                </div>
+                                                            )}
+                                                        </td>
+                                                        <td className="px-6 py-4 text-right font-black text-slate-900">${importe.toFixed(2)}</td>
+                                                        <td className="px-6 py-4 text-right">
+                                                            <div className="flex justify-end gap-1">
+                                                                <Button
+                                                                    variant="ghost"
+                                                                    size="sm"
+                                                                    className="h-8 w-8 p-0 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                                                                    title="Duplicar insumo"
+                                                                    onClick={() => handleDuplicateInsumo(item)}
+                                                                >
+                                                                    <Copy className="h-4 w-4" />
+                                                                </Button>
+                                                                {editingInsumoId === item.id ? (
+                                                                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-green-600" onClick={() => handleUpdateCantidad(item.id)}>
+                                                                        <Check className="h-4 w-4" />
+                                                                    </Button>
+                                                                ) : (
+                                                                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-destructive opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => handleDeleteInsumo(item.id)}>
+                                                                        <Trash className="h-4 w-4" />
+                                                                    </Button>
+                                                                )}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
                             )}
                         </CardContent>
                     </Card>

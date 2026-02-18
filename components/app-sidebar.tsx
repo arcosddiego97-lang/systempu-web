@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { useSidebar } from "@/components/ui/sidebar"
 import {
     LayoutDashboard,
     FolderOpen,
@@ -17,7 +18,8 @@ import {
     Zap,
     Box,
     LogOut,
-    UserCog
+    UserCog,
+    X
 } from "lucide-react"
 
 const sidebarItems = [
@@ -70,6 +72,7 @@ const sidebarItems = [
 
 export function AppSidebar() {
     const pathname = usePathname()
+    const { open, setOpen, isMobile } = useSidebar()
     const [user, setUser] = useState<{ name: string; email: string; role: string } | null>(null)
     const router = useRouter()
 
@@ -88,9 +91,15 @@ export function AppSidebar() {
         router.refresh()
     }
 
-    return (
-        <div className="flex h-full w-72 flex-col glass border-r shadow-sidebar z-40"
-            style={{ borderColor: 'var(--border-slate-200-30)' }}>
+    // Close mobile sidebar on navigation
+    useEffect(() => {
+        if (isMobile) {
+            setOpen(false)
+        }
+    }, [pathname, isMobile, setOpen])
+
+    const SidebarContent = () => (
+        <div className="flex h-full flex-col">
             <div className="flex h-20 items-center px-8 border-b" style={{ borderColor: 'var(--border-slate-200-40)' }}>
                 <div className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-blue-600 to-blue-400 flex items-center justify-center"
@@ -184,8 +193,40 @@ export function AppSidebar() {
                         </Link>
                     </div>
                 )}
-                {/* <p className="mt-4 text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">© 2026 APU MÉXICO</p> */}
             </div>
+        </div>
+    )
+
+    if (isMobile) {
+        return (
+            <>
+                {/* Mobile Overlay */}
+                {open && (
+                    <div className="fixed inset-0 z-50 flex">
+                        <div
+                            className="fixed inset-0 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200"
+                            onClick={() => setOpen(false)}
+                        />
+                        <div className="relative z-50 w-72 h-full bg-white shadow-2xl animate-in slide-in-from-left duration-200 overflow-hidden">
+                            <button
+                                onClick={() => setOpen(false)}
+                                className="absolute right-4 top-6 p-1 bg-slate-100 rounded-full text-slate-500 hover:text-slate-900 z-50"
+                            >
+                                <X className="h-5 w-5" />
+                            </button>
+                            <SidebarContent />
+                        </div>
+                    </div>
+                )}
+            </>
+        )
+    }
+
+    // Desktop
+    return (
+        <div className="hidden md:flex flex-col h-full w-72 glass border-r shadow-sidebar z-40"
+            style={{ borderColor: 'var(--border-slate-200-30)' }}>
+            <SidebarContent />
         </div>
     )
 }

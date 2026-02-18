@@ -183,7 +183,7 @@ export default function BudgetEditorPage({ params }: { params: Promise<{ id: str
                             </Button>
                         </CardHeader>
                         <CardContent>
-                            <div className="rounded-md border overflow-hidden">
+                            <div className="rounded-md border overflow-x-auto">
                                 <table className="w-full text-sm text-left">
                                     <thead className="bg-muted/50 text-xs uppercase text-muted-foreground">
                                         <tr>

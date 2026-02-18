@@ -133,7 +133,7 @@ export default function EquipmentPage() {
                             placeholder="Ej. Retroexcavadora"
                         />
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2">
                             <label className="text-sm font-medium">Unidad</label>
                             <Input
@@ -178,7 +178,7 @@ export default function EquipmentPage() {
                             No hay equipos registrados.
                         </div>
                     ) : (
-                        <div className="rounded-md border">
+                        <div className="rounded-md border overflow-x-auto">
                             <table className="w-full text-sm text-left">
                                 <thead className="text-xs uppercase bg-muted/50">
                                     <tr>

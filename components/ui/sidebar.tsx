@@ -8,12 +8,31 @@ import { Button } from "@/components/ui/button"
 const SidebarContext = React.createContext<{
     open: boolean
     setOpen: (open: boolean) => void
+    isMobile: boolean
 } | null>(null)
 
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
-    const [open, setOpen] = React.useState(true)
+    const [open, setOpen] = React.useState(false)
+    const [isMobile, setIsMobile] = React.useState(false)
+
+    React.useEffect(() => {
+        const checkMobile = () => {
+            const mobile = window.innerWidth < 768
+            setIsMobile(mobile)
+            if (!mobile) {
+                setOpen(true) // Always open on desktop
+            } else {
+                setOpen(false) // Closed by default on mobile
+            }
+        }
+
+        checkMobile()
+        window.addEventListener("resize", checkMobile)
+        return () => window.removeEventListener("resize", checkMobile)
+    }, [])
+
     return (
-        <SidebarContext.Provider value={{ open, setOpen }}>
+        <SidebarContext.Provider value={{ open, setOpen, isMobile }}>
             <div className="flex min-h-screen w-full">{children}</div>
         </SidebarContext.Provider>
     )

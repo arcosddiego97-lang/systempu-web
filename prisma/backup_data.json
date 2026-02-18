@@ -1,0 +1,1131 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@systempu.com",
+      "password": "$2b$10$PJ.7PrpKHuruNE/DJqyLZeHQYKTbK06SynCdcxQfdty4WEdn6QqHe",
+      "name": "Administrador",
+      "role": "ADMIN",
+      "createdAt": "2026-02-18T02:28:45.521Z"
+    },
+    {
+      "id": 2,
+      "email": "capture@systempu.com",
+      "password": "$2b$10$eDfTJXSAmggdQisFwge6uOLBr2XtbmDmz705vW9cPo5A83oYCIFlC",
+      "name": "Capturista",
+      "role": "USER",
+      "createdAt": "2026-02-18T02:28:45.592Z"
+    }
+  ],
+  "materials": [
+    {
+      "id": 1,
+      "clave": "CEM",
+      "descripcion": "CEMENTO",
+      "unidad": "SACO",
+      "costo": 260,
+      "fechaActualizacion": "2026-02-13T17:02:39.428Z"
+    },
+    {
+      "id": 2,
+      "clave": "GRAV",
+      "descripcion": "GRAVA",
+      "unidad": "M3",
+      "costo": 861.36,
+      "fechaActualizacion": "2026-02-13T20:52:10.474Z"
+    },
+    {
+      "id": 3,
+      "clave": "Arm2867",
+      "descripcion": "Armex  12 x 12-4",
+      "unidad": "M",
+      "costo": 41.67,
+      "fechaActualizacion": "2026-02-13T22:16:24.935Z"
+    },
+    {
+      "id": 4,
+      "clave": "CEM9693",
+      "descripcion": "CEMENTO",
+      "unidad": "TON",
+      "costo": 4482.8,
+      "fechaActualizacion": "2026-02-13T22:16:24.986Z"
+    },
+    {
+      "id": 5,
+      "clave": "CEM2743",
+      "descripcion": "CEMENTO GRIS EN KG",
+      "unidad": "KG",
+      "costo": 4.48,
+      "fechaActualizacion": "2026-02-13T22:16:25.016Z"
+    },
+    {
+      "id": 6,
+      "clave": "ARE2001",
+      "descripcion": "ARENA",
+      "unidad": "M3",
+      "costo": 833.3,
+      "fechaActualizacion": "2026-02-13T22:16:25.050Z"
+    },
+    {
+      "id": 7,
+      "clave": "GRA2956",
+      "descripcion": "GRAVA",
+      "unidad": "M3",
+      "costo": 833.3,
+      "fechaActualizacion": "2026-02-13T22:16:25.083Z"
+    },
+    {
+      "id": 8,
+      "clave": "AGU8114",
+      "descripcion": "AGUA",
+      "unidad": "M3",
+      "costo": 25.2,
+      "fechaActualizacion": "2026-02-13T22:16:25.123Z"
+    },
+    {
+      "id": 9,
+      "clave": "BLO7132",
+      "descripcion": "BLOCK HUECO DE 12x20x40 CMS",
+      "unidad": "PZA",
+      "costo": 17,
+      "fechaActualizacion": "2026-02-13T22:16:25.153Z"
+    },
+    {
+      "id": 10,
+      "clave": "ALA1935",
+      "descripcion": "ALAMBRE DE AMARRE",
+      "unidad": "KG",
+      "costo": 43.1,
+      "fechaActualizacion": "2026-02-13T22:16:25.185Z"
+    },
+    {
+      "id": 11,
+      "clave": "DUE2007",
+      "descripcion": "DUELA DE 1\"X4\"X8\"",
+      "unidad": "PZA",
+      "costo": 17.73,
+      "fechaActualizacion": "2026-02-13T22:16:25.216Z"
+    },
+    {
+      "id": 12,
+      "clave": "DIE3304",
+      "descripcion": "DIESEL",
+      "unidad": "LTS",
+      "costo": 26.48,
+      "fechaActualizacion": "2026-02-13T22:16:25.246Z"
+    },
+    {
+      "id": 13,
+      "clave": "CLA3890",
+      "descripcion": "CLAVO DE 2 1/2\"",
+      "unidad": "KG",
+      "costo": 50,
+      "fechaActualizacion": "2026-02-13T22:16:25.277Z"
+    },
+    {
+      "id": 14,
+      "clave": "Arm6139",
+      "descripcion": "Armex 12 x 20-4",
+      "unidad": "M",
+      "costo": 41.67,
+      "fechaActualizacion": "2026-02-13T22:16:25.312Z"
+    },
+    {
+      "id": 15,
+      "clave": "Caj8754",
+      "descripcion": "Caja chalupa galvanizada 1/2, marca Impulsora y Troquelados.",
+      "unidad": "PZA",
+      "costo": 1.72,
+      "fechaActualizacion": "2026-02-13T22:16:25.345Z"
+    },
+    {
+      "id": 16,
+      "clave": "Sob1417",
+      "descripcion": "Sobre tapa sencilla galv. de 19mm para caja de 4\", marca Impulsora y Troquelados",
+      "unidad": "PZA",
+      "costo": 10,
+      "fechaActualizacion": "2026-02-13T22:16:25.376Z"
+    },
+    {
+      "id": 17,
+      "clave": "Apa9191",
+      "descripcion": "Apagador senc.porcelana abs negro 211",
+      "unidad": "PZA",
+      "costo": 21.55,
+      "fechaActualizacion": "2026-02-13T22:16:25.410Z"
+    },
+    {
+      "id": 18,
+      "clave": "Pla9387",
+      "descripcion": "Placa linea 3000 de aluminio dorado 1 unidad cat. 3361, marca Royer",
+      "unidad": "PZA",
+      "costo": 21,
+      "fechaActualizacion": "2026-02-13T22:16:25.436Z"
+    },
+    {
+      "id": 19,
+      "clave": "Tub6134",
+      "descripcion": "Tubo conduit PVC 13mm (1/2\") tipo pesado marca Amanco",
+      "unidad": "M",
+      "costo": 24.14,
+      "fechaActualizacion": "2026-02-13T22:16:25.463Z"
+    },
+    {
+      "id": 20,
+      "clave": "Caj5659",
+      "descripcion": "Caja cuadrada 10x10 sin tapa de 13 y 19 mm",
+      "unidad": "PZA",
+      "costo": 12.93,
+      "fechaActualizacion": "2026-02-13T22:16:25.493Z"
+    },
+    {
+      "id": 21,
+      "clave": "Con7291",
+      "descripcion": "Contacto sencillo color marfil cat. 112 marca Royer",
+      "unidad": "PZA",
+      "costo": 21.55,
+      "fechaActualizacion": "2026-02-13T22:16:25.526Z"
+    },
+    {
+      "id": 22,
+      "clave": "Cab9387",
+      "descripcion": "Cable de cobre Calibre 12 AWG aislado con THW-LS 90 C (75 C) 600V, Vinanel marca Condumex",
+      "unidad": "ML",
+      "costo": 16,
+      "fechaActualizacion": "2026-02-13T22:16:25.556Z"
+    },
+    {
+      "id": 23,
+      "clave": "Soc6683",
+      "descripcion": "Socket de porcelana",
+      "unidad": "PZA",
+      "costo": 25.2,
+      "fechaActualizacion": "2026-02-13T22:16:25.616Z"
+    },
+    {
+      "id": 24,
+      "clave": "Foc8536",
+      "descripcion": "Foco ahorrador 15 watts",
+      "unidad": "PZA",
+      "costo": 50,
+      "fechaActualizacion": "2026-02-13T22:16:25.659Z"
+    },
+    {
+      "id": 25,
+      "clave": "POL6010",
+      "descripcion": "POLIN MONTEN CAL. 14 DE 3 x 1 1/2",
+      "unidad": "KG",
+      "costo": 36.47,
+      "fechaActualizacion": "2026-02-13T22:16:25.701Z"
+    },
+    {
+      "id": 26,
+      "clave": "PIN7973",
+      "descripcion": "PINTURA PRIMARIO ANTICORROSIVO # 2",
+      "unidad": "LTS",
+      "costo": 249.78,
+      "fechaActualizacion": "2026-02-13T22:16:25.746Z"
+    },
+    {
+      "id": 27,
+      "clave": "PIN3198",
+      "descripcion": "PINTURA ESMALTE 100 COLORES REGULARES",
+      "unidad": "LTS",
+      "costo": 2.59,
+      "fechaActualizacion": "2026-02-13T22:16:25.795Z"
+    },
+    {
+      "id": 28,
+      "clave": "PER8146",
+      "descripcion": "PERFIL TUBULAR",
+      "unidad": "KG",
+      "costo": 26.76,
+      "fechaActualizacion": "2026-02-13T22:16:25.898Z"
+    },
+    {
+      "id": 29,
+      "clave": "LAM1184",
+      "descripcion": "LAMINA EN V",
+      "unidad": "M2",
+      "costo": 307,
+      "fechaActualizacion": "2026-02-13T22:16:25.927Z"
+    },
+    {
+      "id": 30,
+      "clave": "SOL8116",
+      "descripcion": "SOLDADURA 6010, 7018",
+      "unidad": "KG",
+      "costo": 130.2,
+      "fechaActualizacion": "2026-02-13T22:16:25.958Z"
+    },
+    {
+      "id": 31,
+      "clave": "ANG2411",
+      "descripcion": "ANGULO DE 11/4\" X 1/8\"",
+      "unidad": "ML",
+      "costo": 31.61,
+      "fechaActualizacion": "2026-02-13T22:16:25.988Z"
+    },
+    {
+      "id": 32,
+      "clave": "PER4200",
+      "descripcion": "PERFIL AP100",
+      "unidad": "ML",
+      "costo": 54.6,
+      "fechaActualizacion": "2026-02-13T22:16:26.021Z"
+    },
+    {
+      "id": 33,
+      "clave": "PER8513",
+      "descripcion": "PERFIL AK 300",
+      "unidad": "ML",
+      "costo": 89.08,
+      "fechaActualizacion": "2026-02-13T22:16:26.048Z"
+    },
+    {
+      "id": 34,
+      "clave": "CHA1344",
+      "descripcion": "CHAPA PHILLIPS 115",
+      "unidad": "PZAS",
+      "costo": 210,
+      "fechaActualizacion": "2026-02-13T22:16:26.079Z"
+    },
+    {
+      "id": 35,
+      "clave": "BIS4690",
+      "descripcion": "BISAGRA TUBULAR DE 1/2\"",
+      "unidad": "PZAS",
+      "costo": 6.9,
+      "fechaActualizacion": "2026-02-13T22:16:26.112Z"
+    },
+    {
+      "id": 36,
+      "clave": "SOL8340",
+      "descripcion": "SOLDADURA 60-13",
+      "unidad": "KG",
+      "costo": 95,
+      "fechaActualizacion": "2026-02-13T22:16:26.148Z"
+    },
+    {
+      "id": 37,
+      "clave": "DIS7867",
+      "descripcion": "DISCO DE CORTE",
+      "unidad": "PZAS",
+      "costo": 43.1,
+      "fechaActualizacion": "2026-02-13T22:16:26.177Z"
+    },
+    {
+      "id": 38,
+      "clave": "Tec9182",
+      "descripcion": "Techumbre de lámina galvanizada Zintro Alum",
+      "unidad": "M2",
+      "costo": 129.26,
+      "fechaActualizacion": "2026-02-13T22:16:26.205Z"
+    },
+    {
+      "id": 39,
+      "clave": "Pij5662",
+      "descripcion": "Pijas auto taladrante tipo AB 1/4\" con arandela",
+      "unidad": "PZA",
+      "costo": 2.59,
+      "fechaActualizacion": "2026-02-13T22:16:26.236Z"
+    },
+    {
+      "id": 40,
+      "clave": "TAB6377",
+      "descripcion": "TABLON DE PINO DE 3A DE 2\"X12\"X8.25",
+      "unidad": "PT",
+      "costo": 137.93,
+      "fechaActualizacion": "2026-02-13T22:16:26.258Z"
+    },
+    {
+      "id": 41,
+      "clave": "MAT-MEJ",
+      "descripcion": "MATERIAL MEJORADO DE BANCO",
+      "unidad": "M3",
+      "costo": 133.33,
+      "fechaActualizacion": "2026-02-14T06:29:32.811Z"
+    },
+    {
+      "id": 42,
+      "clave": "TARF-AC-TERR-1",
+      "descripcion": "TARIFA DE TRANSPORTISTAS DE ACARREO EN TERRACERIAS",
+      "unidad": "M3",
+      "costo": 49.72,
+      "fechaActualizacion": "2026-02-18T01:14:10.099Z"
+    },
+    {
+      "id": 43,
+      "clave": "TARF-AC-TERR.2-20",
+      "descripcion": "TARIFA DE TRANSPORTISTAS DE ACARREO EN TERRACERIAS",
+      "unidad": "M3-KM",
+      "costo": 24.02,
+      "fechaActualizacion": "2026-02-18T01:14:18.102Z"
+    },
+    {
+      "id": 44,
+      "clave": "TARF-AC-TERR.21",
+      "descripcion": "TARIFA DE TRANSPORTISTAS DE ACARREO EN TERRACERIAS",
+      "unidad": "M3-KM",
+      "costo": 23.15,
+      "fechaActualizacion": "2026-02-18T01:14:02.243Z"
+    },
+    {
+      "id": 45,
+      "clave": "TARF-AC-PAV-1",
+      "descripcion": "TARIFA DE TRANSPORTISTAS DE ACARREO EN PAVIMENTO 1ER KM",
+      "unidad": "M3",
+      "costo": 45.63,
+      "fechaActualizacion": "2026-02-18T01:39:16.720Z"
+    },
+    {
+      "id": 46,
+      "clave": "TARF-AC-PAV.2-20",
+      "descripcion": " TARIFA DE TRANSPORTISTAS DE ACARREO EN PAVIMENTO 2-20 KM",
+      "unidad": "M3-KM",
+      "costo": 19.38,
+      "fechaActualizacion": "2026-02-18T01:40:12.457Z"
+    },
+    {
+      "id": 47,
+      "clave": "TARF-AC-PAV.21",
+      "descripcion": "TARIFA DE TRANSPORTISTAS DE ACARREO EN PAVIMENTO 21 KM EN ADELANTE",
+      "unidad": "M3-KM",
+      "costo": 18.32,
+      "fechaActualizacion": "2026-02-18T01:44:03.339Z"
+    }
+  ],
+  "manoObra": [
+    {
+      "id": 34,
+      "clave": "MOO01",
+      "descripcion": "AYUDANTE GENERAL",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 350,
+      "factorSalarioReal": 1.890499,
+      "salarioReal": 661.67,
+      "fechaActualizacion": "2026-02-14T00:57:44.466Z"
+    },
+    {
+      "id": 35,
+      "clave": "MOO02",
+      "descripcion": "OFICIAL ALBAÑIL",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 450,
+      "factorSalarioReal": 1.891384,
+      "salarioReal": 851.12,
+      "fechaActualizacion": "2026-02-14T01:16:50.694Z"
+    },
+    {
+      "id": 36,
+      "clave": "MOO03",
+      "descripcion": "FIERRERO",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 450,
+      "factorSalarioReal": 1.891384,
+      "salarioReal": 851.12,
+      "fechaActualizacion": "2026-02-13T21:15:46.503Z"
+    },
+    {
+      "id": 37,
+      "clave": "MOO04",
+      "descripcion": "CARPINTERO",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 500,
+      "factorSalarioReal": 1.886148,
+      "salarioReal": 943.07,
+      "fechaActualizacion": "2026-02-13T21:15:46.522Z"
+    },
+    {
+      "id": 38,
+      "clave": "MOO05",
+      "descripcion": "PINTOR",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 450,
+      "factorSalarioReal": 1.891384,
+      "salarioReal": 851.12,
+      "fechaActualizacion": "2026-02-13T21:15:46.540Z"
+    },
+    {
+      "id": 39,
+      "clave": "MOO06",
+      "descripcion": "OFICIAL HERRERO",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 450,
+      "factorSalarioReal": 1.891384,
+      "salarioReal": 851.12,
+      "fechaActualizacion": "2026-02-13T21:15:46.571Z"
+    },
+    {
+      "id": 40,
+      "clave": "MOO07",
+      "descripcion": "ELECTRICISTA",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 450,
+      "factorSalarioReal": 1.891384,
+      "salarioReal": 851.12,
+      "fechaActualizacion": "2026-02-13T21:15:46.590Z"
+    },
+    {
+      "id": 41,
+      "clave": "MOO08",
+      "descripcion": "PLOMERO",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 450,
+      "factorSalarioReal": 1.891384,
+      "salarioReal": 851.12,
+      "fechaActualizacion": "2026-02-13T21:15:46.606Z"
+    },
+    {
+      "id": 42,
+      "clave": "MOO09",
+      "descripcion": "CABO DE OFICIOS",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 650,
+      "factorSalarioReal": 1.875249,
+      "salarioReal": 1218.91,
+      "fechaActualizacion": "2026-02-13T21:15:46.625Z"
+    },
+    {
+      "id": 43,
+      "clave": "MOO10",
+      "descripcion": "CABO LINIERO MONTADOR",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 1000,
+      "factorSalarioReal": 1.862537,
+      "salarioReal": 1862.54,
+      "fechaActualizacion": "2026-02-13T21:15:46.642Z"
+    },
+    {
+      "id": 44,
+      "clave": "MOO11",
+      "descripcion": "LINIERO MONTADOR",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 800,
+      "factorSalarioReal": 1.868404,
+      "salarioReal": 1494.72,
+      "fechaActualizacion": "2026-02-13T21:15:46.661Z"
+    },
+    {
+      "id": 45,
+      "clave": "MOO12",
+      "descripcion": "AYUDANTE LINIERO MONTADOR",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 450,
+      "factorSalarioReal": 1.891384,
+      "salarioReal": 851.12,
+      "fechaActualizacion": "2026-02-13T21:15:46.684Z"
+    },
+    {
+      "id": 46,
+      "clave": "MOO13",
+      "descripcion": "OFICIAL ALUMINERO",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 500,
+      "factorSalarioReal": 1.886132,
+      "salarioReal": 943.07,
+      "fechaActualizacion": "2026-02-13T21:15:46.704Z"
+    },
+    {
+      "id": 47,
+      "clave": "MOO14",
+      "descripcion": "OFICIAL AZULEJERO",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 550,
+      "factorSalarioReal": 1.88185,
+      "salarioReal": 1035.02,
+      "fechaActualizacion": "2026-02-13T21:15:46.721Z"
+    },
+    {
+      "id": 48,
+      "clave": "MOO15",
+      "descripcion": "OPERADOR DE MAQUINARIA",
+      "unidad": "JORNAL",
+      "tipo": "INDIVIDUAL",
+      "salarioBase": 700,
+      "factorSalarioReal": 1.872687,
+      "salarioReal": 1310.88,
+      "fechaActualizacion": "2026-02-13T21:15:46.737Z"
+    },
+    {
+      "id": 51,
+      "clave": "CUAD-01",
+      "descripcion": "ALBAÑIL +AYUDANTE GRAL.",
+      "unidad": "JOR",
+      "tipo": "CUADRILLA",
+      "salarioBase": 800,
+      "factorSalarioReal": 1,
+      "salarioReal": 1512.79,
+      "fechaActualizacion": "2026-02-14T01:35:49.650Z"
+    },
+    {
+      "id": 53,
+      "clave": "CUAD-02",
+      "descripcion": "CUAD-COLADO 2 AYUDANTE GRAL",
+      "unidad": "JOR",
+      "tipo": "CUADRILLA",
+      "salarioBase": 700,
+      "factorSalarioReal": 1,
+      "salarioReal": 1323.34,
+      "fechaActualizacion": "2026-02-14T01:35:49.658Z"
+    },
+    {
+      "id": 55,
+      "clave": "CUAD-03",
+      "descripcion": "2 AYUDANTE GRAL.",
+      "unidad": "JOR",
+      "tipo": "CUADRILLA",
+      "salarioBase": 700,
+      "factorSalarioReal": 1,
+      "salarioReal": 1323.34,
+      "fechaActualizacion": "2026-02-14T06:30:57.475Z"
+    }
+  ],
+  "maquinaria": [
+    {
+      "id": 3,
+      "clave": "VIB-001",
+      "descripcion": "VIBRADOR DE CONCRETO 4 HP",
+      "unidad": "HR",
+      "costoHorario": 127.19,
+      "fechaActualizacion": "2026-02-14T02:09:55.281Z"
+    },
+    {
+      "id": 4,
+      "clave": "REV-001",
+      "descripcion": "REVOLVEDORA",
+      "unidad": "HR",
+      "costoHorario": 157.82,
+      "fechaActualizacion": "2026-02-14T02:11:07.967Z"
+    },
+    {
+      "id": 5,
+      "clave": "BH-01",
+      "descripcion": "BAILARINA HYUNDAI",
+      "unidad": "HR",
+      "costoHorario": 122.34,
+      "fechaActualizacion": "2026-02-17T19:54:21.822Z"
+    }
+  ],
+  "apus": [
+    {
+      "id": 2,
+      "codigo": "fc200",
+      "descripcion": "CONCRETO FC=200 Kg/Cm2 TMA 3/4\" ",
+      "unidad": "M3",
+      "tipo": "BASICO",
+      "costoDirecto": 2552.56,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.25,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 3190.7,
+      "fechaActualizacion": "2026-02-13T23:06:28.380Z",
+      "insumos": [
+        {
+          "id": 6,
+          "apuId": 2,
+          "materialId": 4,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.348,
+          "costoParcial": 1560.0144
+        },
+        {
+          "id": 7,
+          "apuId": 2,
+          "materialId": 6,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.555,
+          "costoParcial": 462.4815
+        },
+        {
+          "id": 8,
+          "apuId": 2,
+          "materialId": 7,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.63,
+          "costoParcial": 524.9789999999999
+        },
+        {
+          "id": 10,
+          "apuId": 2,
+          "materialId": 8,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.202,
+          "costoParcial": 5.09
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "codigo": "fc150",
+      "descripcion": "CONCRETO F´C=150 KG/CM2 TMA= 3/4\"",
+      "unidad": "M3",
+      "tipo": "BASICO",
+      "costoDirecto": 2385.12,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.25,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 2981.4,
+      "fechaActualizacion": "2026-02-14T00:10:02.128Z",
+      "insumos": [
+        {
+          "id": 11,
+          "apuId": 3,
+          "materialId": 4,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.306,
+          "costoParcial": 1371.74
+        },
+        {
+          "id": 12,
+          "apuId": 3,
+          "materialId": 6,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.58,
+          "costoParcial": 483.31
+        },
+        {
+          "id": 13,
+          "apuId": 3,
+          "materialId": 7,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.63,
+          "costoParcial": 524.98
+        },
+        {
+          "id": 14,
+          "apuId": 3,
+          "materialId": 8,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.202,
+          "costoParcial": 5.09
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "codigo": "P.U.A.FC150-001",
+      "descripcion": "SUMINISTRO Y COLOCACION DE CONCRETO F'c=150 KG/CM2, ELABORADO EN OBRA CON REVOLVEDORA; INCLUYE: NIVELACIÓN, COMPACTACIÓN, ACARREO DENTRO DE LA OBRA, LIMPIEZA, CURADO, MANO DE OBRA Y TODO LO NECESARIO PARA SU CORRECTA EJECUCION.",
+      "unidad": "M3",
+      "tipo": "MATRIZ",
+      "costoDirecto": 3994.18,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 5103.9,
+      "fechaActualizacion": "2026-02-14T02:54:25.076Z",
+      "insumos": [
+        {
+          "id": 20,
+          "apuId": 4,
+          "materialId": null,
+          "manoObraId": 51,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.47619,
+          "costoParcial": 720.38
+        },
+        {
+          "id": 21,
+          "apuId": 4,
+          "materialId": null,
+          "manoObraId": 53,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.47619,
+          "costoParcial": 630.16
+        },
+        {
+          "id": 22,
+          "apuId": 4,
+          "materialId": null,
+          "manoObraId": null,
+          "maquinariaId": 3,
+          "insumoApuId": null,
+          "cantidad": 0.4,
+          "costoParcial": 50.88
+        },
+        {
+          "id": 23,
+          "apuId": 4,
+          "materialId": null,
+          "manoObraId": null,
+          "maquinariaId": 4,
+          "insumoApuId": null,
+          "cantidad": 0.56,
+          "costoParcial": 88.38
+        },
+        {
+          "id": 24,
+          "apuId": 4,
+          "materialId": null,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": 3,
+          "cantidad": 1.05,
+          "costoParcial": 2504.38
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "codigo": "P.U.A.FC200-001",
+      "descripcion": "CONCRETO HIDRÁULICO CON RESISTENCIA DE F'C=200KG/CM2 CON CEMENTO NORMAL, TAMAÑO MÁXIMO DE AGREGADO 3/4\" ELABORADO CON REVOLVEDORA; INCLUYE: COLOCADO, VIBRADO, CURADO, REGLEADO, NIVELADO, HERRAMIENTA MENOR Y MANO DE OBRA. INCLUYE TODO LO NECESARIO PARA SU CORRECTA EJECUCIÓN.",
+      "unidad": "M3",
+      "tipo": "MATRIZ",
+      "costoDirecto": 4182.35,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 5341.93,
+      "fechaActualizacion": "2026-02-14T05:38:26.622Z",
+      "insumos": [
+        {
+          "id": 25,
+          "apuId": 5,
+          "materialId": null,
+          "manoObraId": 51,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.47619,
+          "costoParcial": 720.38
+        },
+        {
+          "id": 27,
+          "apuId": 5,
+          "materialId": null,
+          "manoObraId": null,
+          "maquinariaId": 3,
+          "insumoApuId": null,
+          "cantidad": 0.46,
+          "costoParcial": 58.51
+        },
+        {
+          "id": 28,
+          "apuId": 5,
+          "materialId": null,
+          "manoObraId": 53,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.47619,
+          "costoParcial": 630.16
+        },
+        {
+          "id": 29,
+          "apuId": 5,
+          "materialId": null,
+          "manoObraId": null,
+          "maquinariaId": 4,
+          "insumoApuId": null,
+          "cantidad": 0.59,
+          "costoParcial": 93.11
+        },
+        {
+          "id": 30,
+          "apuId": 5,
+          "materialId": null,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": 2,
+          "cantidad": 1.05,
+          "costoParcial": 2680.19
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "codigo": "A.P.U.RELL.001",
+      "descripcion": "COLOCACION Y TENDIDO DE MATERIAL MEJORADO; EN CAPAS DE 20 CMS DE ESPESOR, COMPACTADOS CON EQUIPO MECANICO MANUAL O EQUIPO SIMILAR, AL 90%, SEGÚN PRUEBA PROCTOR, PREVIA LA INCORPORACION DEL AGUA NECESARIA; INCLUYE  ADQUISICION DEL MATERIAL  MEJORADO, HERRAMIENTA MENOR, MANO DE OBRA Y TODO LO NECESARIO PARA SU CORRECTA EJECUCION ",
+      "unidad": "M3",
+      "tipo": "MATRIZ",
+      "costoDirecto": 413.24,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0.05,
+      "precioUnitario": 543.67,
+      "fechaActualizacion": "2026-02-14T06:28:46.456Z",
+      "insumos": [
+        {
+          "id": 36,
+          "apuId": 7,
+          "materialId": 41,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 1.3,
+          "costoParcial": 173.33
+        },
+        {
+          "id": 37,
+          "apuId": 7,
+          "materialId": 8,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.101,
+          "costoParcial": 2.55
+        },
+        {
+          "id": 39,
+          "apuId": 7,
+          "materialId": null,
+          "manoObraId": 34,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 0.3125,
+          "costoParcial": 206.77
+        },
+        {
+          "id": 40,
+          "apuId": 7,
+          "materialId": null,
+          "manoObraId": null,
+          "maquinariaId": 5,
+          "insumoApuId": null,
+          "cantidad": 0.25,
+          "costoParcial": 30.59
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "codigo": "PUA.ACATERR1",
+      "descripcion": "ACARREO 1ER. KM. S/TERRACERIA; PARA MATERIALES DE BANCOS Y CORTES DE PROYECTOS, PRODUCTO DE EXCAVACIÓN,  DESMONTE, DESPALME, DERRUMBES Y ABATIMIENTOS DE TALUD INCLUYE: LA TARIFA VIGENTE DE TRANSPORTISTAS CONCESIONADOS DE LA ZONA, CARGA MECANICA, INDIRECTOS DE ADMINISTRACION Y DE CAMPO, ASI COMO TODO LO NECESARIO PARA SU CORRECTA EJECUCION.",
+      "unidad": "M3",
+      "tipo": "MATRIZ",
+      "costoDirecto": 49.72,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 62.9,
+      "fechaActualizacion": "2026-02-17T22:42:04.671Z",
+      "insumos": [
+        {
+          "id": 41,
+          "apuId": 8,
+          "materialId": 42,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 1,
+          "costoParcial": 49.72
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "codigo": "PUA. ACATERR20",
+      "descripcion": "ACARREO KMS. SUB'SEC. S/TERRACERIA DEL 2-20; PARA MATERIALES DE BANCOS Y CORTES DE PROYECTOS, PRODUCTO DE EXCAVACIÓN,  DESMONTE, DESPALME, DERRUMBES Y ABATIMIENTOS DE TALUD, INCLUYE: LA TARIFA VIGENTE DE TRANSPORTISTAS CONCESIONADOS DE LA ZONA, INDIRECTOS DE ADMINISTRACION Y DE CAMPO, ASI COMO TODO LO NECESARIO PARA SU CORRECTA EJECUCION.",
+      "unidad": "M3-KM",
+      "tipo": "MATRIZ",
+      "costoDirecto": 24.02,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 30.39,
+      "fechaActualizacion": "2026-02-17T23:02:48.555Z",
+      "insumos": [
+        {
+          "id": 43,
+          "apuId": 9,
+          "materialId": 43,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 1,
+          "costoParcial": 24.02
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "codigo": "PUA. ACATERR21",
+      "descripcion": "ACARREO KMS. SUB'SEC. S/TERRACERIA DEL 21 KM EN ADELANTE ; PARA MATERIALES DE BANCOS Y CORTES DE PROYECTOS, PRODUCTO DE EXCAVACIÓN,  DESMONTE, DESPALME, DERRUMBES, ABATIMIENTOS DE TALUD Y PRODUCTO DE BERMAS, PARA DISTANCIAS A PRIMER KILÓMETRO INCLUYE: LA TARIFA VIGENTE DE TRANSPORTISTAS CONCESIONADOS DE LA ZONA, CARGA MECANICA, INDIRECTOS DE ADMINISTRACION Y DE CAMPO, ASI COMO TODO LO NECESARIO PARA SU CORRECTA EJECUCION.",
+      "unidad": "M3-KM",
+      "tipo": "MATRIZ",
+      "costoDirecto": 23.15,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 29.28,
+      "fechaActualizacion": "2026-02-18T01:10:36.836Z",
+      "insumos": [
+        {
+          "id": 45,
+          "apuId": 10,
+          "materialId": 44,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 1,
+          "costoParcial": 23.15
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "codigo": "PUA.ACAPAV1",
+      "descripcion": "ACARREO 1ER. KM. S/PAVIMENTO; PARA MATERIALES DE BANCOS Y CORTES DE PROYECTOS, PRODUCTO DE EXCAVACIÓN,  DESMONTE, DESPALME, DERRUMBES Y ABATIMIENTOS DE TALUD INCLUYE: LA TARIFA VIGENTE DE TRANSPORTISTAS CONCESIONADOS DE LA ZONA, CARGA MECANICA, INDIRECTOS DE ADMINISTRACION Y DE CAMPO, ASI COMO TODO LO NECESARIO PARA SU CORRECTA EJECUCION.",
+      "unidad": "M3",
+      "tipo": "MATRIZ",
+      "costoDirecto": 45.63,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 57.72,
+      "fechaActualizacion": "2026-02-18T01:52:24.060Z",
+      "insumos": [
+        {
+          "id": 46,
+          "apuId": 11,
+          "materialId": 45,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 1,
+          "costoParcial": 45.63
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "codigo": "PUA. ACAPAV20.",
+      "descripcion": "ACARREO KMS. SUB'SEC. S/PAVIMENTO DEL 2-20; PARA MATERIALES DE BANCOS Y CORTES DE PROYECTOS, PRODUCTO DE EXCAVACIÓN,  DESMONTE, DESPALME, DERRUMBES Y ABATIMIENTOS DE TALUD, INCLUYE: LA TARIFA VIGENTE DE TRANSPORTISTAS CONCESIONADOS DE LA ZONA, INDIRECTOS DE ADMINISTRACION Y DE CAMPO, ASI COMO TODO LO NECESARIO PARA SU CORRECTA EJECUCION.",
+      "unidad": "M3-KM",
+      "tipo": "MATRIZ",
+      "costoDirecto": 19.38,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 24.52,
+      "fechaActualizacion": "2026-02-18T01:53:44.658Z",
+      "insumos": [
+        {
+          "id": 47,
+          "apuId": 12,
+          "materialId": 46,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 1,
+          "costoParcial": 19.38
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "codigo": "PUA. ACAPAV21",
+      "descripcion": "ACARREO KMS. SUB'SEC. S/PAVIMENTO CDEL 21 KM EN ADELANTE ; PARA MATERIALES DE BANCOS Y CORTES DE PROYECTOS, PRODUCTO DE EXCAVACIÓN,  DESMONTE, DESPALME, DERRUMBES, ABATIMIENTOS DE TALUD Y PRODUCTO DE BERMAS, PARA DISTANCIAS A PRIMER KILÓMETRO INCLUYE: LA TARIFA VIGENTE DE TRANSPORTISTAS CONCESIONADOS DE LA ZONA, CARGA MECANICA, INDIRECTOS DE ADMINISTRACION Y DE CAMPO, ASI COMO TODO LO NECESARIO PARA SU CORRECTA EJECUCION.",
+      "unidad": "M3-KM",
+      "tipo": "MATRIZ",
+      "costoDirecto": 18.32,
+      "costoIndirecto": null,
+      "costoFinanciamiento": null,
+      "costoUtilidad": null,
+      "porcentajeSobrecosto": 0.265,
+      "factorEquipoSeguridad": 0,
+      "precioUnitario": 23.17,
+      "fechaActualizacion": "2026-02-18T01:54:28.704Z",
+      "insumos": [
+        {
+          "id": 48,
+          "apuId": 13,
+          "materialId": 47,
+          "manoObraId": null,
+          "maquinariaId": null,
+          "insumoApuId": null,
+          "cantidad": 1,
+          "costoParcial": 18.32
+        }
+      ]
+    }
+  ],
+  "proyectos": [
+    {
+      "id": 1,
+      "clave": null,
+      "nombre": "viviendas ",
+      "cliente": "tumbala",
+      "ubicacion": "29920",
+      "responsable": null,
+      "fechaInicio": null,
+      "fechaFin": null,
+      "iva": 0.16,
+      "presupuestos": [
+        {
+          "id": 1,
+          "proyectoId": 1,
+          "nombre": "assss",
+          "descripcion": "ddddd",
+          "porcentajeIndirectos": 0.15,
+          "porcentajeFinanciamiento": 0.02,
+          "porcentajeUtilidad": 0.1,
+          "porcentajeCargosAdicionales": 0.005,
+          "montoTotal": 0,
+          "fechaCreacion": "2026-02-13T17:13:31.759Z",
+          "fechaActualizacion": "2026-02-13T17:13:31.759Z",
+          "conceptos": []
+        }
+      ]
+    }
+  ],
+  "config": {
+    "id": 1,
+    "nombreEmpresa": "Empresa Constructora S.A.",
+    "direccion": "",
+    "correoContacto": "",
+    "iva": 0.16,
+    "surchargeDefault": 0.265,
+    "fechaActualizacion": "2026-02-18T02:33:19.454Z"
+  }
+}
