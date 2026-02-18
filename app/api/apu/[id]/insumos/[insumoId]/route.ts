@@ -69,8 +69,9 @@ export async function PATCH(
         const equipoSeguridad = Math.round((subtotalMO * factorEquipoSeguridad) * 100) / 100
 
         // Calculate final price with surcharge
-        const costoDirectoTotal = total + herramientaMenor + equipoSeguridad
-        const precioUnitario = Math.round((costoDirectoTotal * (1 + porcentajeSobrecosto)) * 100) / 100
+        // FIX: costoDirecto should store only the raw sum of insumos. Indirects are calculated on demand.
+        const costoDirectoTotal = total
+        const precioUnitario = Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
 
         await prisma.analisisPrecioUnitario.update({
             where: { id: apuId },
@@ -119,8 +120,9 @@ export async function DELETE(
         const equipoSeguridad = Math.round((subtotalMO * factorEquipoSeguridad) * 100) / 100
 
         // Calculate final price with surcharge
-        const costoDirectoTotal = total + herramientaMenor + equipoSeguridad
-        const precioUnitario = Math.round((costoDirectoTotal * (1 + porcentajeSobrecosto)) * 100) / 100
+        // FIX: costoDirecto should store only the raw sum of insumos. Indirects are calculated on demand.
+        const costoDirectoTotal = total
+        const precioUnitario = Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
 
         await prisma.analisisPrecioUnitario.update({
             where: { id: apuId },
