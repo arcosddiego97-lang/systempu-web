@@ -1,0 +1,195 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// =======================
+// INSUMOS (Resources)
+// =======================
+
+model Material {
+  id          Int      @id @default(autoincrement())
+  clave       String   @unique
+  descripcion String
+  unidad      String
+  costo       Float
+  fechaActualizacion DateTime @default(now())
+  
+  // Relations
+  insumosEnAnalisis InsumoEnAnalisis[]
+}
+
+model ManoObra {
+  id          Int      @id @default(autoincrement())
+  clave       String   @unique
+  descripcion String
+  unidad      String   @default("jor") // e.g., "jor" (jornada)
+  tipo        String   @default("INDIVIDUAL") // INDIVIDUAL or CUADRILLA
+  salarioBase Float    @default(0)
+  factorSalarioReal Float? // Fsr calculated
+  salarioReal Float? // Calculated FASAR (Salario Base * Fsr)
+  fechaActualizacion DateTime @default(now())
+
+  // Relations
+  insumosEnAnalisis InsumoEnAnalisis[]
+  
+  // Composition relationships
+  componentes  ComponenteCuadrilla[] @relation("CuadrillaPadre")
+  utilizadoEn  ComponenteCuadrilla[] @relation("IntegranteCuadrilla")
+}
+
+model ComponenteCuadrilla {
+  id           Int      @id @default(autoincrement())
+  cuadrillaId  Int
+  integranteId Int
+  cantidad     Float    // Cantidad de personal de este tipo en la cuadrilla
+  
+  cuadrilla    ManoObra @relation("CuadrillaPadre", fields: [cuadrillaId], references: [id], onDelete: Cascade)
+  integrante   ManoObra @relation("IntegranteCuadrilla", fields: [integranteId], references: [id])
+
+  @@unique([cuadrillaId, integranteId])
+}
+
+model Maquinaria {
+  id          Int      @id @default(autoincrement())
+  clave       String   @unique
+  descripcion String
+  unidad      String   // e.g., "hora"
+  costoHorario Float
+  fechaActualizacion DateTime @default(now())
+
+  // Relations
+  insumosEnAnalisis InsumoEnAnalisis[]
+}
+
+// =======================
+// APU (Unit Price Analysis)
+// =======================
+
+model AnalisisPrecioUnitario {
+  id             Int      @id @default(autoincrement())
+  codigo         String   @unique // Code of the concept (e.g., "CIM-01")
+  descripcion    String
+  unidad         String
+  tipo           String   @default("MATRIZ") // MATRIZ or BASICO
+  
+  // Cost Components
+  costoDirecto   Float?   // Sum of materials + labor + equipment
+  costoIndirecto Float?   // Calculated percentage
+  costoFinanciamiento Float?
+  costoUtilidad  Float?
+  porcentajeSobrecosto Float @default(0.25)
+  factorEquipoSeguridad Float @default(0) // Safety equipment as % of MO (e.g., 0.05 for 5%)
+  precioUnitario Float?   // Final integrated price
+
+  fechaActualizacion DateTime @default(now())
+
+  // Relations
+  insumos       InsumoEnAnalisis[] @relation("ApuInsumos")
+  utilizadoEn   InsumoEnAnalisis[] @relation("SubApuRelation")
+  presupuestos  ConceptoPresupuesto[]
+}
+
+model InsumoEnAnalisis {
+  id              Int @id @default(autoincrement())
+  apuId           Int
+  apu             AnalisisPrecioUnitario @relation("ApuInsumos", fields: [apuId], references: [id])
+  
+  // Polymorphic relation to specific resource type
+  materialId      Int?
+  material        Material? @relation(fields: [materialId], references: [id])
+  
+  manoObraId      Int?
+  manoObra        ManoObra? @relation(fields: [manoObraId], references: [id])
+  
+  maquinariaId    Int?
+  maquinaria      Maquinaria? @relation(fields: [maquinariaId], references: [id])
+
+  insumoApuId     Int?
+  insumoApu       AnalisisPrecioUnitario? @relation("SubApuRelation", fields: [insumoApuId], references: [id])
+
+  cantidad        Float // Rendimiento or Quantity
+  costoParcial    Float? // (Quantity * Unit Cost) at time of analysis capture
+}
+
+// =======================
+// PROJECT & BUDGET
+// =======================
+
+model Proyecto {
+  id          Int      @id @default(autoincrement())
+  clave       String?   @unique // Optional project code
+  nombre      String
+  cliente     String?
+  ubicacion   String?
+  responsable String?   // Project manager
+  fechaInicio DateTime?
+  fechaFin    DateTime?
+  
+  // Config params for this project
+  iva         Float    @default(0.16)
+  
+  presupuestos Presupuesto[]
+}
+
+model Presupuesto {
+  id                Int      @id @default(autoincrement())
+  proyectoId        Int
+  proyecto          Proyecto @relation(fields: [proyectoId], references: [id])
+  nombre            String   // e.g., "Presupuesto Base", "Adicionales"
+  descripcion       String?
+  
+  // Persisted Coefficients (Percentages)
+  porcentajeIndirectos      Float @default(0.15)
+  porcentajeFinanciamiento Float @default(0.02)
+  porcentajeUtilidad        Float @default(0.10)
+  porcentajeCargosAdicionales Float @default(0.005)
+
+  montoTotal        Float    @default(0)
+  fechaCreacion     DateTime @default(now())
+  fechaActualizacion DateTime @updatedAt
+  
+  conceptos         ConceptoPresupuesto[]
+}
+
+model ConceptoPresupuesto {
+  id            Int      @id @default(autoincrement())
+  presupuestoId Int
+  presupuesto   Presupuesto @relation(fields: [presupuestoId], references: [id])
+  
+  apuId         Int
+  apu           AnalisisPrecioUnitario @relation(fields: [apuId], references: [id])
+  
+  cantidad      Float
+  importe       Float? // cantidad * apu.precioUnitario
+}
+
+model Configuracion {
+  id                   Int      @id @default(1)
+  nombreEmpresa        String   @default("Empresa Constructora S.A.")
+  direccion            String?
+  correoContacto       String?
+  iva                  Float    @default(0.16)
+  surchargeDefault     Float    @default(0.25)
+  fechaActualizacion   DateTime @updatedAt
+}
+
+// =======================
+// AUTHENTICATION
+// =======================
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("USER") // "ADMIN" or "USER"
+  createdAt DateTime @default(now())
+}
