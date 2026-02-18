@@ -28,12 +28,18 @@ export async function POST() {
                 .reduce((acc, curr) => acc + (curr.costoParcial || 0), 0)
             const herramientaMenor = Math.round((subtotalMO * 0.03) * 100) / 100
 
-            // Get porcentajeSobrecosto (default 0.25 if not set)
+            // Get APU settings
             const porcentajeSobrecosto = apu.porcentajeSobrecosto ?? 0.25
+            const factorEquipoSeguridad = (apu as any).factorEquipoSeguridad ?? 0
+
+            // Calculate safety equipment (% of MO subtotal)
+            const equipoSeguridad = Math.round((subtotalMO * factorEquipoSeguridad) * 100) / 100
 
             // Calculate final price with surcharge
-            const costoDirectoTotal = costoDirecto + herramientaMenor
-            const precioUnitario = Math.round((costoDirectoTotal * (1 + porcentajeSobrecosto)) * 100) / 100
+            // FIX: costoDirecto should store only the raw sum of insumos. Indirects are calculated on demand.
+            // const costoDirectoTotal = costoDirecto + herramientaMenor // OLD BUGGY LINE
+
+            const precioUnitario = Math.round(((costoDirecto + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
 
             // Update APU
             await prisma.analisisPrecioUnitario.update({
