@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname
 
     // Define public paths that don't need authentication
-    const isPublicPath = path === "/login" || path.startsWith("/api/auth/login") || path.startsWith("/api/auth/logout") || path.startsWith("/api/admin/fix-basicos")
+    const isPublicPath = path === "/login" || path.startsWith("/api/auth/login") || path.startsWith("/api/auth/logout")
 
     // Protected routes pattern
     const isProtectedRoute = path.startsWith("/dashboard") || path.startsWith("/api")
