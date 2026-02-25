@@ -65,7 +65,10 @@ export async function PATCH(
         }
 
         const costoDirecto = current.costoDirecto || 0
-        const precioUnitario = Math.round((costoDirecto * (1 + (newPorcentaje || 0))) * 100) / 100
+        // BASICO type: no surcharge applied — precioUnitario = costoDirecto
+        const precioUnitario = current.tipo === "BASICO"
+            ? costoDirecto
+            : Math.round((costoDirecto * (1 + (newPorcentaje || 0))) * 100) / 100
 
         const updated = await prisma.analisisPrecioUnitario.update({
             where: { id },

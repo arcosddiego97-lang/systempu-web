@@ -51,7 +51,8 @@ export async function POST(
             costoUnitario = e?.costoHorario || 0
         } else if (insumoApuId) {
             const a = await prisma.analisisPrecioUnitario.findUnique({ where: { id: insumoApuId } })
-            costoUnitario = a?.precioUnitario || 0
+            // Use costoDirecto (not precioUnitario) to avoid double-counting the surcharge factor
+            costoUnitario = a?.costoDirecto || 0
         }
 
         const newInsumo = await prisma.insumoEnAnalisis.create({
@@ -89,9 +90,11 @@ export async function POST(
         const equipoSeguridad = Math.round((subtotalMO * factorEquipoSeguridad) * 100) / 100
 
         // Calculate final price with surcharge
-        // FIX: costoDirecto should store only the raw sum of insumos. Indirects are calculated on demand.
+        // BASICO type: no surcharge — precioUnitario = costoDirecto
         const costoDirectoTotal = total
-        const precioUnitario = Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
+        const precioUnitario = apu?.tipo === "BASICO"
+            ? costoDirectoTotal
+            : Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
 
         await prisma.analisisPrecioUnitario.update({
             where: { id: apuId },

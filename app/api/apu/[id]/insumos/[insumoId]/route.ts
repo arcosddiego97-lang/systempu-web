@@ -34,7 +34,8 @@ export async function PATCH(
         if (existing.material) costoUnitario = existing.material.costo
         else if (existing.manoObra) costoUnitario = existing.manoObra.salarioReal || existing.manoObra.salarioBase || 0
         else if (existing.maquinaria) costoUnitario = existing.maquinaria.costoHorario || 0
-        else if (existing.insumoApu) costoUnitario = existing.insumoApu.precioUnitario || 0
+        // Use costoDirecto (not precioUnitario) to avoid double-counting the surcharge factor
+        else if (existing.insumoApu) costoUnitario = existing.insumoApu.costoDirecto || 0
 
         const newCantidad = parseFloat(cantidad)
         const newCostoParcial = Math.round((costoUnitario * newCantidad) * 100) / 100
@@ -69,9 +70,11 @@ export async function PATCH(
         const equipoSeguridad = Math.round((subtotalMO * factorEquipoSeguridad) * 100) / 100
 
         // Calculate final price with surcharge
-        // FIX: costoDirecto should store only the raw sum of insumos. Indirects are calculated on demand.
+        // BASICO type: no surcharge — precioUnitario = costoDirecto
         const costoDirectoTotal = total
-        const precioUnitario = Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
+        const precioUnitario = apu?.tipo === "BASICO"
+            ? costoDirectoTotal
+            : Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
 
         await prisma.analisisPrecioUnitario.update({
             where: { id: apuId },
@@ -120,9 +123,11 @@ export async function DELETE(
         const equipoSeguridad = Math.round((subtotalMO * factorEquipoSeguridad) * 100) / 100
 
         // Calculate final price with surcharge
-        // FIX: costoDirecto should store only the raw sum of insumos. Indirects are calculated on demand.
+        // BASICO type: no surcharge — precioUnitario = costoDirecto
         const costoDirectoTotal = total
-        const precioUnitario = Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
+        const precioUnitario = apu?.tipo === "BASICO"
+            ? costoDirectoTotal
+            : Math.round(((costoDirectoTotal + herramientaMenor + equipoSeguridad) * (1 + porcentajeSobrecosto)) * 100) / 100
 
         await prisma.analisisPrecioUnitario.update({
             where: { id: apuId },

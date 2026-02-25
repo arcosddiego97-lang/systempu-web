@@ -30,6 +30,7 @@ interface APU {
     codigo: string
     descripcion: string
     unidad: string
+    tipo: string
     costoDirecto: number
     porcentajeSobrecosto?: number
     factorEquipoSeguridad?: number
@@ -371,63 +372,89 @@ export default function APUEditorPage({ params }: { params: Promise<{ id: string
                     </CardContent>
                 </Card>
 
-                <Card>
-                    <CardHeader className="pb-2">
-                        <CardTitle className="text-sm">Estructura de Precio (Sobrecosto)</CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                        <div className="flex justify-between items-center text-xs font-medium text-slate-500 uppercase">
-                            <span>Concepto</span>
-                            <span>Importe</span>
-                        </div>
-                        <div className="space-y-1 text-sm">
-                            <div className="flex justify-between py-1 border-b border-slate-50">
-                                <span className="text-slate-600">Costo Directo</span>
-                                <span className="font-bold">${costoDirectoTotal.toFixed(2)}</span>
+                {/* Surcharge panel: hidden for BASICO-type APUs */}
+                {apu.tipo !== "BASICO" && (
+                    <Card>
+                        <CardHeader className="pb-2">
+                            <CardTitle className="text-sm">Estructura de Precio (Sobrecosto)</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                            <div className="flex justify-between items-center text-xs font-medium text-slate-500 uppercase">
+                                <span>Concepto</span>
+                                <span>Importe</span>
                             </div>
-                            <p className="text-[10px] text-blue-500 font-medium italic mt-1">Incluye 3% de herramienta menor s/MO.</p>
+                            <div className="space-y-1 text-sm">
+                                <div className="flex justify-between py-1 border-b border-slate-50">
+                                    <span className="text-slate-600">Costo Directo</span>
+                                    <span className="font-bold">${costoDirectoTotal.toFixed(2)}</span>
+                                </div>
+                                <p className="text-[10px] text-blue-500 font-medium italic mt-1">Incluye 3% de herramienta menor s/MO.</p>
 
-                            <div className="flex justify-between items-center py-2 border-b border-slate-50">
-                                <span className="text-slate-600 text-xs text-blue-600 font-bold uppercase">Factor de Sobrecosto</span>
-                                {isEditingSobrecosto ? (
-                                    <div className="flex items-center gap-1">
-                                        <Input
-                                            type="number"
-                                            step="0.01"
-                                            value={tempSobrecosto}
-                                            onChange={(e) => setTempSobrecosto(e.target.value)}
-                                            className="h-7 w-20 text-right text-xs font-bold"
-                                            autoFocus
-                                            onKeyDown={(e) => {
-                                                if (e.key === "Enter") handleUpdateSobrecosto()
-                                                if (e.key === "Escape") setIsEditingSobrecosto(false)
+                                <div className="flex justify-between items-center py-2 border-b border-slate-50">
+                                    <span className="text-slate-600 text-xs text-blue-600 font-bold uppercase">Factor de Sobrecosto</span>
+                                    {isEditingSobrecosto ? (
+                                        <div className="flex items-center gap-1">
+                                            <Input
+                                                type="number"
+                                                step="0.01"
+                                                value={tempSobrecosto}
+                                                onChange={(e) => setTempSobrecosto(e.target.value)}
+                                                className="h-7 w-20 text-right text-xs font-bold"
+                                                autoFocus
+                                                onKeyDown={(e) => {
+                                                    if (e.key === "Enter") handleUpdateSobrecosto()
+                                                    if (e.key === "Escape") setIsEditingSobrecosto(false)
+                                                }}
+                                                onBlur={() => setIsEditingSobrecosto(false)}
+                                            />
+                                            <span className="text-xs font-bold text-slate-400">%</span>
+                                        </div>
+                                    ) : (
+                                        <div
+                                            className="cursor-pointer hover:bg-blue-50 px-2 py-1 rounded border border-transparent hover:border-blue-200 transition-all font-black text-slate-900"
+                                            onClick={() => {
+                                                setTempSobrecosto(((apu.porcentajeSobrecosto !== undefined ? apu.porcentajeSobrecosto : 0.25) * 100).toString())
+                                                setIsEditingSobrecosto(true)
                                             }}
-                                            onBlur={() => setIsEditingSobrecosto(false)}
-                                        />
-                                        <span className="text-xs font-bold text-slate-400">%</span>
-                                    </div>
-                                ) : (
-                                    <div
-                                        className="cursor-pointer hover:bg-blue-50 px-2 py-1 rounded border border-transparent hover:border-blue-200 transition-all font-black text-slate-900"
-                                        onClick={() => {
-                                            setTempSobrecosto(((apu.porcentajeSobrecosto !== undefined ? apu.porcentajeSobrecosto : 0.25) * 100).toString())
-                                            setIsEditingSobrecosto(true)
-                                        }}
-                                    >
-                                        {(factorSobrecosto * 100).toFixed(2)}%
-                                    </div>
-                                )}
+                                        >
+                                            {(factorSobrecosto * 100).toFixed(2)}%
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="flex justify-between pt-2">
+                                    <span className="font-black text-blue-600 uppercase text-xs">Precio Unitario</span>
+                                    <span className="text-xl font-black text-blue-600 tracking-tighter">
+                                        ${precioUnitario.toFixed(2)}
+                                    </span>
+                                </div>
                             </div>
-                            <div className="flex justify-between pt-2">
-                                <span className="font-black text-blue-600 uppercase text-xs">Precio Unitario</span>
-                                <span className="text-xl font-black text-blue-600 tracking-tighter">
-                                    ${precioUnitario.toFixed(2)}
-                                </span>
+                            <p className="text-[9px] text-muted-foreground italic">* Los factores de sobrecosto se configuran a nivel presupuesto.</p>
+                        </CardContent>
+                    </Card>
+                )}
+                {/* For BASICO: show only costo directo card */}
+                {apu.tipo === "BASICO" && (
+                    <Card>
+                        <CardHeader className="pb-2">
+                            <CardTitle className="text-sm">Costo del Básico</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                            <div className="space-y-1 text-sm">
+                                <div className="flex justify-between py-1">
+                                    <span className="text-slate-600">Subtotal Insumos</span>
+                                    <span className="font-bold">${(apu.costoDirecto || 0).toFixed(2)}</span>
+                                </div>
+                                <div className="flex justify-between pt-2 border-t border-slate-100">
+                                    <span className="font-black text-blue-600 uppercase text-xs">Costo Directo</span>
+                                    <span className="text-xl font-black text-blue-600 tracking-tighter">
+                                        ${(apu.costoDirecto || 0).toFixed(2)}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <p className="text-[9px] text-muted-foreground italic">* Los factores de sobrecosto se configuran a nivel presupuesto.</p>
-                    </CardContent>
-                </Card>
+                            <p className="text-[9px] text-muted-foreground italic">* Los básicos no llevan factor de sobrecosto.</p>
+                        </CardContent>
+                    </Card>
+                )}
             </div>
 
             {/* 4 Secciones de Insumos */}
@@ -575,7 +602,8 @@ export default function APUEditorPage({ params }: { params: Promise<{ id: string
                                                 if (item.material) costoU = item.material.costo
                                                 else if (item.manoObra) costoU = item.manoObra.salarioReal
                                                 else if (item.maquinaria) costoU = item.maquinaria.costoHorario
-                                                else if ((item as any).insumoApu) costoU = (item as any).insumoApu.precioUnitario
+                                                // Use costoDirecto for básicos (not precioUnitario) to avoid showing the surcharge
+                                                else if ((item as any).insumoApu) costoU = (item as any).insumoApu.costoDirecto || 0
 
                                                 const importe = item.costoParcial || 0
 
