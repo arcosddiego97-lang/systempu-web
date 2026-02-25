@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server"
+import { NextRequest } from "next/server"
 import { prisma } from "@/lib/db"
 
-// Temporary migration endpoint: fix precioUnitario of BASICO APUs
-// Protected by a one-time secret token via x-admin-token header
-export async function POST(request: Request) {
+// Temporary one-time migration: fix precioUnitario of BASICO APUs
+// Auth via query param: ?token=systempu-fix-2024
+export async function POST(request: NextRequest) {
     try {
-        const authHeader = request.headers.get("x-admin-token")
-        if (authHeader !== "systempu-fix-2024") {
+        const token = request.nextUrl.searchParams.get("token")
+        if (token !== "systempu-fix-2024") {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
         }
 
