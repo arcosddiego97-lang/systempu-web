@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/db"
-import { getSession } from "@/lib/auth"
 
 // Temporary migration endpoint: fix precioUnitario of BASICO APUs
-// Only accessible by ADMIN users
-export async function POST() {
+// Protected by a one-time secret token via x-admin-token header
+export async function POST(request: Request) {
     try {
-        const session = await getSession()
-        if (!session || session.user.role !== "ADMIN") {
+        const authHeader = request.headers.get("x-admin-token")
+        if (authHeader !== "systempu-fix-2024") {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
         }
 
